@@ -157,7 +157,35 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-xs font-semibold text-[#18232d]/60 transition hover:text-[#ef725d];
+  }
+  .section-kicker {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-[#18232d]/55;
+  }
+  .project-card {
+    @apply min-h-[34rem] rounded-[1.5rem] p-7 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/10 sm:p-9;
+  }
+  .social-link {
+    @apply flex size-10 items-center justify-center rounded-full border border-[#18232d]/15 transition hover:border-[#ef725d] hover:text-[#ef725d];
+  }
+}
+
+@theme inline {
+  --font-serif: Georgia, 'Times New Roman', serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+
+::selection {
+  background: #ef725d;
+  color: #18232d;
 }
