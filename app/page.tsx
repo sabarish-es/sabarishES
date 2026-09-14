@@ -40,7 +40,7 @@ export default function Page() {
       <nav className="site-nav" aria-label="Main navigation">
         <a href="#home" className="brand-mark"><span className="brand-icon"><Terminal size={20} /></span><span><strong>sabarish.in</strong><small>Software Trainer</small></span></a>
         <div className={`nav-links ${menuOpen ? 'is-open' : ''}`}>
-          {['Home', 'Achievements', 'Skills', 'Projects', 'Experience'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} onClick={closeMenu}>{item}</a>)}
+          {['Home', 'Achievements', 'Skills', 'GitHub Analytics', 'Projects', 'Experience'].map((item) => <a key={item} href={`#${item === 'GitHub Analytics' ? 'github' : item.toLowerCase()}`} onClick={closeMenu}>{item}</a>)}
           <a href="#contact" className="nav-contact" onClick={closeMenu}>Contact</a>
         </div>
         <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button>
