@@ -24,6 +24,7 @@ export default function Page() {
   const [isLight, setIsLight] = useState(false)
   const [cursor, setCursor] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
+  const [contactSent, setContactSent] = useState(false)
   const closeMenu = () => setMenuOpen(false)
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -31,6 +32,7 @@ export default function Page() {
     const data = new FormData(event.currentTarget)
     const subject = encodeURIComponent(`Portfolio enquiry from ${data.get('name')}`)
     const body = encodeURIComponent(`Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`)
+    setContactSent(true)
     window.location.href = `mailto:sabarishs094@gmail.com?subject=${subject}&body=${body}`
   }
 
@@ -71,7 +73,7 @@ export default function Page() {
 
       <section id="experience" className="content-section experience-section"><div className="section-heading"><span>04 / journey</span><h2>Teaching through<br /><em>every build.</em></h2></div><div className="timeline"><article><div className="timeline-dot" /><div><p className="timeline-date">CURRENT ROLE</p><h3>Software Trainer · Besant Technologies</h3><p>Guiding learners through Python, web development, databases, and full stack application development with hands-on, career-focused training.</p></div></article><article><div className="timeline-dot" /><div><p className="timeline-date">FREELANCE</p><h3>Freelance Full Stack Developer</h3><p>Building practical websites and web applications for clients, from responsive interfaces to reliable backend workflows.</p></div></article><article><div className="timeline-dot" /><div><p className="timeline-date">COURSE COMPLETION · SLA</p><h3>Python Full Stack Development</h3><p>Completed professional training in Python full stack development at SLA, covering frontend, backend, databases, and application development.</p></div></article><article><div className="timeline-dot" /><div><p className="timeline-date">COURSE COMPLETION · MASTERMIND TECHNO SOLUTIONS</p><h3>Python with Flask</h3><p>Completed Python with Flask course training at Mastermind Techno Solutions, with practical experience building lightweight web applications.</p></div></article><article><div className="timeline-dot" /><div><p className="timeline-date">EDUCATION</p><h3>B.Sc. Computer Science</h3><p>Developed a strong foundation in programming, databases, web technologies, and problem solving.</p></div></article></div></section>
 
-      <section id="contact" className="contact-section"><div><span className="section-kicker">05 / let&apos;s connect</span><h2>Have a question<br /><em>or a project?</em></h2><p>Reach out for training conversations, collaborations, freelance work, or anything you would like to build together.</p></div><form className="contact-form" onSubmit={handleSubmit}><label htmlFor="name">Name<input id="name" name="name" required placeholder="Your name" /></label><label htmlFor="email">Email<input id="email" name="email" required type="email" placeholder="you@example.com" /></label><label htmlFor="message">Message<textarea id="message" name="message" required rows={4} placeholder="Tell me a little about your message" /></label><button className="primary-button" type="submit"><Send size={17} /> Send message</button></form></section>
+      <section id="contact" className="contact-section"><div><span className="section-kicker">05 / let&apos;s connect</span><h2>Have a question<br /><em>or a project?</em></h2><p>Reach out for training conversations, collaborations, freelance work, or anything you would like to build together.</p><div className="contact-direct"><a href="mailto:sabarishs094@gmail.com"><Mail /> Email me directly</a><a href="tel:+916369721553"><Phone /> Call me</a></div></div><form className="contact-form" onSubmit={handleSubmit}><label htmlFor="name">Name<input id="name" name="name" required placeholder="Your name" /></label><label htmlFor="email">Email<input id="email" name="email" required type="email" placeholder="you@example.com" /></label><label htmlFor="message">Message<textarea id="message" name="message" required rows={4} placeholder="Tell me a little about your message" /></label><button className="primary-button" type="submit"><Send size={17} /> Send message</button>{contactSent && <p className="contact-success" role="status">Your email app should open now. If it does not, use “Email me directly” above.</p>}</form></section>
       <footer><span>© 2025 Sabarish E</span><span>Built with purpose · Tamil Nadu, India</span></footer>
     </main>
   )
