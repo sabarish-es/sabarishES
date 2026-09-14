@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Sabarish E — Python Full Stack Developer',
-  description: 'The professional portfolio of Sabarish E, a Python full stack developer building useful digital experiences with Flask, Django, JavaScript, and MySQL.',
+  title: 'Sabarish E — Software Developer & Trainer',
+  description: 'The portfolio of Sabarish E, a software developer and Software Trainer at Besant Technologies building practical full-stack applications.',
   generator: 'v0.app',
   icons: {
     icon: [
