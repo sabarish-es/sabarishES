@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowDownToLine, ArrowUpRight, Code2, ExternalLink, GitBranch, Mail, Menu, Phone, Send, Terminal, UserRound, X } from 'lucide-react'
+import { ArrowDownToLine, ArrowUpRight, Code2, ExternalLink, GitBranch, Mail, Menu, Moon, Phone, Send, Sun, Terminal, UserRound, X } from 'lucide-react'
 import { FormEvent, useState } from 'react'
 
 const skills = [
@@ -21,6 +21,7 @@ const projects = [
 
 export default function Page() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isLight, setIsLight] = useState(false)
   const [cursor, setCursor] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
   const closeMenu = () => setMenuOpen(false)
@@ -34,7 +35,7 @@ export default function Page() {
   }
 
   return (
-    <main className="portfolio-shell min-h-screen bg-[#020a18] text-slate-100" onPointerMove={(event) => setCursor({ x: event.clientX, y: event.clientY })} onPointerDown={() => setIsDragging(true)} onPointerUp={() => setIsDragging(false)} onPointerLeave={() => setIsDragging(false)}>
+    <main className={`portfolio-shell min-h-screen ${isLight ? 'theme-light' : ''}`} onPointerMove={(event) => setCursor({ x: event.clientX, y: event.clientY })} onPointerDown={() => setIsDragging(true)} onPointerUp={() => setIsDragging(false)} onPointerLeave={() => setIsDragging(false)}>
       <div className={`cursor-orb ${isDragging ? 'is-dragging' : ''}`} style={{ transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0)` }} aria-hidden="true"><span /></div>
       <div className="drag-hint" aria-hidden="true">{isDragging ? 'release' : 'drag me'}</div>
       <nav className="site-nav" aria-label="Main navigation">
@@ -43,13 +44,13 @@ export default function Page() {
           {['Home', 'Achievements', 'Skills', 'GitHub Analytics', 'Projects', 'Experience'].map((item) => <a key={item} href={`#${item === 'GitHub Analytics' ? 'github' : item.toLowerCase()}`} onClick={closeMenu}>{item}</a>)}
           <a href="#contact" className="nav-contact" onClick={closeMenu}>Contact</a>
         </div>
-        <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button>
+        <div className="nav-actions"><button className="theme-button" onClick={() => setIsLight(!isLight)} aria-label={isLight ? 'Switch to dark mode' : 'Switch to light mode'}>{isLight ? <Moon /> : <Sun />}</button><button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button></div>
       </nav>
 
       <section id="home" className="hero-section">
         <div className="hero-copy">
           <div className="availability"><span /> Software Trainer at Besant Technologies <b>·</b> Freelance developer <b>·</b> Open to connect</div>
-          <h1>Hi, I&apos;m <span>Sabarish E</span></h1>
+          <h1 className="hero-name">Hi, I&apos;m <span className="name-reveal">Sabarish E</span></h1>
           <h2><Code2 size={22} /> Software Trainer &amp; Full Stack Developer</h2>
           <p className="hero-intro">I help aspiring developers build strong foundations in Python full stack development through practical learning, clear explanations, and real-world projects.</p>
           <div className="contact-pills"><a href="mailto:sabarishs094@gmail.com"><Mail size={16} /> sabarishs094@gmail.com</a><a href="tel:+916369721553"><Phone size={16} /> +91 63697 21553</a></div>
